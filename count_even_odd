@@ -1,0 +1,40 @@
+/*creating a array dynamicaly and randomly generating value
+in array then count the number of even and odd elements*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main(void)
+{
+    int number;
+    printf("Enter the size of array ");
+    scanf("%d", &number);
+    int *array;
+    array = (int*)calloc(number, sizeof(int));
+    srand(time(NULL));
+
+    for(int i=0;i<number;i++)
+    {
+      *(array+i) = rand() % 100;
+    }
+    printf("\nthe array is\n");
+    for(int i=0;i<number;i++)
+    {
+        printf("\t%d", *(array+i));
+    }
+
+    int count_even = 0;
+    int count_odd = 0;
+    for(int i=0;i<number;i++){
+    if(*(array+i)%2==0)
+      count_even++;
+    else
+      count_odd++;
+    }
+    
+    printf("\neven elements are %d", count_even);
+    printf("\nodd elements are %d", count_odd);
+
+    return 0;
+}
